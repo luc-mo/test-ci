@@ -1,9 +1,17 @@
-name: first
+name: second
 
-on: [push]
+on:
+  workflow_run:
+    workflows: [first]
+    types:
+      - completed
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      WORKFLOW_NAME: ${{ github..event.workflow_run.event_name }}
+      WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
     steps:
-      - run: echo 'First workflow'
+      - run: echo $WORKFLOW_NAME
+      - run: echo $WORKFLOW_CONCLUSION
