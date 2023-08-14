@@ -10,7 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      WORKFLOW_NAME: ${{ github..event.workflow_run.event_name }}
+      WORKFLOW_NAME: ${{ github.event.workflow_run.event_name }}
       WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
     steps:
       - run: echo $WORKFLOW_NAME
