@@ -13,3 +13,4 @@ jobs:
       WORKFLOW_CONCLUSION: ${{ github.event.workflow_run }}
     steps:
       - run: echo $WORKFLOW_CONCLUSION
+      - run: echo "wat"
